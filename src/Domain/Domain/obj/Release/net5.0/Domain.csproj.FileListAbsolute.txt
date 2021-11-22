@@ -1,0 +1,12 @@
+C:\_Develoment\_Weelo\v2\Domain\Domain\bin\Release\net5.0\Domain.deps.json
+C:\_Develoment\_Weelo\v2\Domain\Domain\bin\Release\net5.0\Domain.dll
+C:\_Develoment\_Weelo\v2\Domain\Domain\bin\Release\net5.0\ref\Domain.dll
+C:\_Develoment\_Weelo\v2\Domain\Domain\bin\Release\net5.0\Domain.pdb
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.csproj.AssemblyReference.cache
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.AssemblyInfoInputs.cache
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.AssemblyInfo.cs
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.csproj.CoreCompileInputs.cache
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.dll
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\ref\Domain.dll
+C:\_Develoment\_Weelo\v2\Domain\Domain\obj\Release\net5.0\Domain.pdb

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="api-business-manager" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\_Develoment\\Templates\\Templates\\Designer-Back-End\\OPP\.WebApi\\obj\\Release\\net5\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

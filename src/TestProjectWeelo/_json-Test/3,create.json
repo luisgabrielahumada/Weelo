@@ -1,0 +1,22 @@
+{
+  "name": "Caiba 00",
+  "address": "Parque Residencial Prado Verde Sector Ceiba",
+  "price": 32000000,
+  "codeInternational": "00001",
+  "year": 2020,
+  "idOwner": 1,
+  "propertyTrace": [
+    {
+      "dateSale": "2021-11-19T21:10:05.567Z",
+      "name": "Administración",
+      "value": 250000,
+      "tax": 0
+    },
+    {
+      "dateSale": "2021-11-19T21:10:05.567Z",
+      "name": "Canón",
+      "value": 167000,
+      "tax": 180000
+    }
+  ]
+}		

@@ -1,0 +1,15 @@
+C:\_Develoment\_Weelo\v3\Weelo.db\bin\Debug\Weelo.db.dacpac
+C:\_Develoment\_Weelo\v3\Weelo.db\bin\Debug\Weelo.db.dll
+C:\_Develoment\_Weelo\v3\Weelo.db\bin\Debug\Weelo.db.pdb
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\Weelo.db.dll
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\Weelo.db.pdb
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\Model.xml
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\refactor.xml
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\postdeploy.sql
+C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\predeploy.sql
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\bin\Debug\Weelo.db.dacpac
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\bin\Debug\Weelo.db.dll
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\bin\Debug\Weelo.db.pdb
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\obj\Debug\Weelo.db.sqlproj.AssemblyReference.cache
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\obj\Debug\Weelo.db.dll
+C:\_Develoment\_Weelo\Weelo\src\Weelo.db\obj\Debug\Weelo.db.pdb

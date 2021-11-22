@@ -1,0 +1,12 @@
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\bin\Debug\net5.0\DTO.TransferObject.deps.json
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\bin\Debug\net5.0\DTO.TransferObject.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\bin\Debug\net5.0\ref\DTO.TransferObject.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\bin\Debug\net5.0\DTO.TransferObject.pdb
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.csproj.AssemblyReference.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.AssemblyInfoInputs.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.AssemblyInfo.cs
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.csproj.CoreCompileInputs.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\ref\DTO.TransferObject.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.TransferObject\obj\Debug\net5.0\DTO.TransferObject.pdb

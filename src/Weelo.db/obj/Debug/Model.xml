@@ -1,0 +1,2132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="2.9" DspName="Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+	<Header>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="130" />
+		</CustomData>
+		<CustomData Category="Reference" Type="Assembly">
+			<Metadata Name="LogicalName" Value="Weelo.db.dll" />
+			<Metadata Name="FileName" Value="C:\_DEVELOMENT\_WEELO\V3\WEELO.DB\OBJ\DEBUG\WEELO.DB.DLL" />
+			<Metadata Name="AssemblyName" Value="Weelo.db" />
+			<Metadata Name="PermissionSet" Value="SAFE" />
+			<Metadata Name="Owner" Value="" />
+			<Metadata Name="GenerateSqlClrDdl" Value="True" />
+			<Metadata Name="IsVisible" Value="True" />
+			<Metadata Name="IsModelAware" Value="True" />
+			<Metadata Name="SkipCreationIfEmpty" Value="True" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\_Develoment\_Weelo\v3\Weelo.db\obj\Debug\Weelo.db.pdb" />
+		</CustomData>
+		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
+	</Header>
+	<Model>
+		<Element Type="SqlDatabaseOptions">
+			<Property Name="Collation" Value="SQL_Latin1_General_CP1_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Property Name="DefaultLanguage" Value="" />
+			<Property Name="DefaultFullTextLanguage" Value="" />
+			<Property Name="QueryStoreStaleQueryThreshold" Value="367" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[DB_Login_Validate]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+	SET NOCOUNT ON;
+	--=====================================================================================================================
+    -- Declare
+    --=====================================================================================================================
+	DECLARE  @error VARCHAR(max)
+	IF NOT EXISTS(SELECT *
+					FROM [dbo].[User]
+					WHERE [User].Login=@Login and [User].Password=@Password)
+	BEGIN
+		RAISERROR('Login or password is not valid..',16,1)
+		RETURN
+	END
+		
+	SELECT [IdUser]
+			,[Name]
+			,[Email]
+			,[Login]
+	FROM [dbo].[User]
+	Where [User].Login=@Login and [User].Password=@Password
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Login]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Login_Validate].[@Login]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Password]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Login_Validate].[@Password]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[IdUser]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Email]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Login]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Login]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[User].[Password]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Login_Validate].[@Login]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="200" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Login_Validate].[@Password]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="751" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE  PROCEDURE [dbo].[DB_Login_Validate]&#xD;&#xA;&#x9;@Login [varchar](200),&#xD;&#xA;&#x9;@Password [varchar](100)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[DB_Property_Image_Save]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SET NOCOUNT ON;
+    --=====================================================================================================================
+    -- Declare
+    --=====================================================================================================================
+    Declare @error varchar(max),@IdPropertyImage int
+	Begin try
+		BEGIN  TRANSACTION
+		INSERT PropertyImage([IdProperty],[file],[Enabled]) 
+		Select @IdProperty,@file,@Enabled
+		Set @IdPropertyImage = SCOPE_IDENTITY();
+		COMMIT  TRANSACTION
+	------------------------------------------------------------------------------
+	-- send back answer
+	------------------------------------------------------------------------------
+	SELECT @IdPropertyImage AS IdPropertyImage
+	-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	End Try
+	Begin Catch
+		-- there was an error
+		If XACT_STATE() =-1
+		Begin
+    			Rollback WORK
+		End
+		If @@trancount >0
+		Begin
+    			Rollback WORK
+		End
+		If XACT_STATE() = 1
+		Begin
+    			Commit WORK
+		End
+		--Getting the error description
+		Set @error = ERROR_MESSAGE();
+		RaisError(@error,16,1)
+		Return
+	End Catch
+	
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyImage]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyImage].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyImage].[file]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyImage].[Enabled]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Image_Save].[@idProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Image_Save].[@file]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Image_Save].[@enabled]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Image_Save].[@idProperty]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Image_Save].[@file]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Image_Save].[@enabled]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1315" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE   PROCEDURE [dbo].[DB_Property_Image_Save] &#xD;&#xA;&#x9;@idProperty int,&#xD;&#xA;&#x9;@file NVARCHAR(255),&#xD;&#xA;&#x9;@enabled bit&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[DB_Property_List]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+		SET NOCOUNT ON;
+		--=====================================================================================================================
+		-- Declare
+		--=====================================================================================================================
+		Create table #temp (IdProperty int,[Name] varchar(50),[Address] varchar(255) ,[Price] money ,[CodeInternational] varchar(50) ,[Year] int,IdOwner int ,NameOwner varchar(50),AddressOwner varchar(50),Birthday date, Photo varchar(255))
+		Declare @TotalRecords int
+		------------------------------------------------------------------------------
+		-- getting list
+		------------------------------------------------------------------------------		
+		Insert into #temp
+		SELECT Property.[IdProperty]
+				,Property.[Name]
+				,Property.[Address]
+				,Property.[Price]
+				,Property.[CodeInternational]
+				,Property.[Year]
+				,Property.[IdOwner]
+				,[Owner].Name as NameOwner
+				,[Owner].Address as AddressOwner
+				,[Owner].Birthday
+				,[Owner].Photo
+		FROM [dbo].[Property]
+				INNER JOIN [Owner] ON [Owner].IdOwner = [Property].IdOwner
+		Where (Property.Year = @year or @year=0)
+			  And (@price >= Property.Price or @price=0)
+			  And (Property.Name like '%'+@descripcion+'%' or Property.Address  like '%'+@descripcion+'%' or @descripcion='')
+
+		Select @TotalRecords =count(*) From #temp
+		Select IdProperty ,[Name],[Address],[Price]  ,[CodeInternational] ,[Year],IdOwner  ,NameOwner,AddressOwner ,Birthday , Photo, @TotalRecords as TotalRecords
+		From #temp
+		ORDER BY CURRENT_TIMESTAMP OFFSET (@pageIndex-1)*@pageSize ROWS FETCH FIRST @pageSize ROWS ONLY
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner].[IdOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[CodeInternational]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner].[Birthday]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Owner].[Photo]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[@year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[@price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[@descripcion]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[CodeInternational]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[IdOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[NameOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[AddressOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Birthday]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[#temp].[Photo]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[@pageIndex]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_List].[@pageSize]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DynamicObjects">
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[dbo].[DB_Property_List].[#temp]">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[IdProperty]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Name]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Address]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="255" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Price]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[money]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[CodeInternational]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Year]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[IdOwner]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[NameOwner]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[AddressOwner]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Birthday]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[date]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_List].[#temp].[Photo]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="255" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_List].[@pageIndex]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[1]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_List].[@pageSize]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[10]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_List].[@year]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_List].[@price]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_List].[@descripcion]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA['']]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1836" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE  PROCEDURE [dbo].[DB_Property_List]&#xD;&#xA;&#x9;@pageIndex [int] = 1,&#xD;&#xA;&#x9;@pageSize [int] = 10,&#xD;&#xA;&#x9;@year int =0,&#xD;&#xA;&#x9;@price money=0,&#xD;&#xA;&#x9;@descripcion varchar(255)=''&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[DB_Property_Save]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SET NOCOUNT ON;
+    --=====================================================================================================================
+    -- Declare
+    --=====================================================================================================================
+    Declare @error varchar(max)
+	Create table #tempPropertyTrace(IdProperty int, [DateSale] date NULL,[Name] varchar(50) NULL,[Value] money NULL,[Tax] money NULL)
+	Begin Try
+		BEGIN  TRANSACTION
+		
+			if(@IdProperty=0)
+			Begin
+				INSERT Property ([Name],[Address],[Price],[CodeInternational],[Year],[IdOwner]) 
+				VALUES (@Name,@Address,@Price,@CodeInternational,@Year,@IdOwner)
+				Set @IdProperty =  SCOPE_IDENTITY()
+			End
+			Else
+			Begin
+				UPDATE Property SET 
+						[Name]					= @Name
+						,[Address]				= @Address
+						,[Price]				= @Price
+						,[CodeInternational]	= @CodeInternational
+						,[Year]					= @Year
+						,[IdOwner]				= @IdOwner
+				Where [IdProperty] = @IdProperty
+			End
+
+
+			Insert into #tempPropertyTrace(IdProperty,[DateSale],[Name],[Value],[Tax])
+			Select @IdProperty,[DateSale],[Name],[Value],[Tax]
+			From @PropertyTrace
+
+			MERGE PropertyTrace AS TARGET
+			USING #tempPropertyTrace AS SOURCE
+			ON (TARGET.IdProperty = SOURCE.IdProperty)
+			WHEN MATCHED THEN
+			UPDATE 
+			SET TARGET.[DateSale] = SOURCE.[DateSale],
+				TARGET.[Name] = SOURCE.[Name],
+				TARGET.[Value] = SOURCE.[Value],
+				TARGET.[Tax] = SOURCE.[Tax]
+			WHEN NOT MATCHED BY TARGET THEN
+			INSERT (IdProperty,[DateSale],[Name],[Value],[Tax]) 
+			VALUES (SOURCE.IdProperty,SOURCE.[DateSale],SOURCE.[Name],SOURCE.[Value],SOURCE.[Tax]);
+
+		COMMIT  TRANSACTION
+	------------------------------------------------------------------------------
+	-- send back answer
+	------------------------------------------------------------------------------
+	SELECT @IdProperty AS IdProperty
+	-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	End Try
+	Begin Catch
+		-- there was an error
+		If XACT_STATE() =-1
+		Begin
+    			Rollback WORK
+		End
+		If @@trancount >0
+		Begin
+    			Rollback WORK
+		End
+		If XACT_STATE() = 1
+		Begin
+    			Commit WORK
+		End
+		--Getting the error description
+		Set @error = ERROR_MESSAGE();
+		RaisError(@error,16,1)
+		Return
+	End Catch
+	
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[CodeInternational]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@Address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@CodeInternational]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@Year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@IdOwner]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Tax]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@PropertyTrace]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@PropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Tax]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Tax]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Tax]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[Tax]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[DateSale]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Value]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Tax]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DynamicObjects">
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace]">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[IdProperty]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[int]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[DateSale]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[date]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Name]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Value]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[money]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[#tempPropertyTrace].[Tax]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[money]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[dbo].[DB_Property_Save].[@PropertyTrace]" Disambiguator="3">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[@PropertyTrace].[DateSale]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[date]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Name]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Property Name="Length" Value="50" />
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[varchar]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Value]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[money]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlSimpleColumn" Name="[dbo].[DB_Property_Save].[@PropertyTrace].[Tax]">
+									<Relationship Name="TypeSpecifier">
+										<Entry>
+											<Element Type="SqlTypeSpecifier">
+												<Relationship Name="Type">
+													<Entry>
+														<References ExternalSource="BuiltIns" Name="[money]" />
+													</Entry>
+												</Relationship>
+											</Element>
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@IdProperty]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@Address]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@CodeInternational]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@Name]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@Price]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@Year]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@IdOwner]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_Save].[@PropertyTrace]">
+						<Property Name="IsReadOnly" Value="True" />
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References Name="[dbo].[PropertyTraceTemp]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="2596" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE   PROCEDURE [dbo].[DB_Property_Save] &#xD;&#xA;&#x9;@IdProperty int = 0,&#xD;&#xA;&#x9;@Address varchar(255),&#xD;&#xA;&#x9;@CodeInternational varchar(50),&#xD;&#xA;&#x9;@Name varchar(50),&#xD;&#xA;&#x9;@Price money,&#xD;&#xA;&#x9;@Year int,&#xD;&#xA;&#x9;@IdOwner int,&#xD;&#xA;&#x9;@PropertyTrace  [PropertyTraceTemp] READONLY&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[DB_Property_UpdatePrice]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+BEGIN
+    SET NOCOUNT ON;
+    --=====================================================================================================================
+    -- Declare
+    --=====================================================================================================================
+	Declare @error varchar(max)
+	Begin Try
+
+		If NOT EXISTS(Select * from Property Where IdProperty=@idProperty)
+		BEGIN
+			RaisError('The update property was not found.',16,1);
+			return
+		END
+		BEGIN  TRANSACTION
+			--  Update on the temporary table (#Property) IdOwner
+			UPDATE Property
+			SET Price = @price
+			Where IdProperty = @idProperty
+
+		COMMIT  TRANSACTION
+	------------------------------------------------------------------------------
+	-- send back answer
+	------------------------------------------------------------------------------
+	SELECT @idProperty AS IdProperty
+	-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	End Try
+	Begin Catch
+		-- there was an error
+		If XACT_STATE() =-1
+		Begin
+    			Rollback WORK
+		End
+		If @@trancount >0
+		Begin
+    			Rollback WORK
+		End
+		If XACT_STATE() = 1
+		Begin
+    			Commit WORK
+		End
+		--Getting the error description
+		Set @error = ERROR_MESSAGE();
+		RaisError(@error,16,1)
+		Return
+	End Catch
+	
+END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[varchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_UpdatePrice].[@idProperty]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[Price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[DB_Property_UpdatePrice].[@price]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_UpdatePrice].[@idProperty]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[DB_Property_UpdatePrice].[@price]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1417" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE   PROCEDURE [dbo].[DB_Property_UpdatePrice] &#xD;&#xA;&#x9;@idProperty int,&#xD;&#xA;&#x9;@price money&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlDefaultConstraint" Name="[dbo].[DF_PropertyImage_Enabled]">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[((1))]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PropertyImage]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[PropertyImage].[Enabled]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Property_Owner]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Property].[IdOwner]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Owner].[IdOwner]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Owner]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_PropertyImage_Property]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[PropertyImage].[IdProperty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PropertyImage]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_PropertyTrace_Property]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[PropertyTrace].[IdProperty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PropertyTrace]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Property].[IdProperty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Owner]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Owner].[IdOwner]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Owner].[Name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Owner].[Address]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Owner].[Photo]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Owner].[Birthday]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Owner]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Owner].[IdOwner]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Owner]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="4" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Property]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Property].[IdProperty]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Property]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_PropertyImage]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[PropertyImage].[IdPropertyImage]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PropertyImage]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_PropertyTrace]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[PropertyTrace].[IdPropertyTrace]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[PropertyTrace]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_User]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[User].[IdUser]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[User]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Property]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[IdProperty]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[Name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[Address]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[Price]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[CodeInternational]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[Year]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Property].[IdOwner]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="5" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[PropertyImage]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyImage].[IdPropertyImage]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyImage].[IdProperty]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyImage].[file]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyImage].[Enabled]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="6" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[PropertyTrace]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[IdPropertyTrace]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[DateSale]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[Name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[Value]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[Tax]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[PropertyTrace].[IdProperty]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="7" />
+		</Element>
+		<Element Type="SqlTableType" Name="[dbo].[PropertyTraceTemp]">
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlTableTypeSimpleColumn" Name="[dbo].[PropertyTraceTemp].[DateSale]">
+						<Property Name="IsNullable" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlTableTypeSimpleColumn" Name="[dbo].[PropertyTraceTemp].[Name]">
+						<Property Name="IsNullable" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlTableTypeSimpleColumn" Name="[dbo].[PropertyTraceTemp].[Value]">
+						<Property Name="IsNullable" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlTableTypeSimpleColumn" Name="[dbo].[PropertyTraceTemp].[Tax]">
+						<Property Name="IsNullable" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[money]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[User]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[IdUser]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[Name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[Email]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="80" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[Login]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[User].[Password]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Filegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="8" />
+		</Element>
+	</Model>
+</DataSchemaModel>

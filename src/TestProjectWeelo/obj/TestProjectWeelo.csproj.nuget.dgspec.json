@@ -1,0 +1,397 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\TestProjectWeelo\\TestProjectWeelo.csproj": {}
+  },
+  "projects": {
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\Services.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj"
+              },
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\Infrastructure.csproj"
+              },
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Core.Component.Library.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Core.Component.Library.SQL": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Core.Component.Library.WebTools": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.3.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj",
+        "projectName": "Weelo.Domain",
+        "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectName": "Infrastructure",
+        "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Core.Component.Library.Storage": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Core.Component.Library.StorageV2": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Core.Component.Library.WebTools": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.14.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.14.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj",
+        "projectName": "Weelo.Mapper",
+        "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Domain\\Domain\\Weelo.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\_Develoment\\_Weelo\\Weelo\\src\\TestProjectWeelo\\TestProjectWeelo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\_Develoment\\_Weelo\\Weelo\\src\\TestProjectWeelo\\TestProjectWeelo.csproj",
+        "projectName": "TestProjectWeelo",
+        "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\TestProjectWeelo\\TestProjectWeelo.csproj",
+        "packagesPath": "C:\\Users\\LG\\.nuget\\packages\\",
+        "outputPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\TestProjectWeelo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\Services.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Core\\Services.csproj"
+              },
+              "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj": {
+                "projectPath": "C:\\_Develoment\\_Weelo\\Weelo\\src\\Mappers\\DTO.Mapper\\Weelo.Mapper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.9.4, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.1, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[3.17.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

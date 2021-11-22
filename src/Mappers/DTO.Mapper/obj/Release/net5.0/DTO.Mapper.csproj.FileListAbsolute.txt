@@ -1,0 +1,15 @@
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\DTO.Mapper.deps.json
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\DTO.Mapper.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\ref\DTO.Mapper.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\DTO.Mapper.pdb
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\Domain.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\bin\Release\net5.0\Domain.pdb
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.csproj.AssemblyReference.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.AssemblyInfoInputs.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.AssemblyInfo.cs
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.csproj.CoreCompileInputs.cache
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.csproj.CopyComplete
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\ref\DTO.Mapper.dll
+C:\_Develoment\_Weelo\v2\Mappers\DTO.Mapper\obj\Release\net5.0\DTO.Mapper.pdb
